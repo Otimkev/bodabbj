@@ -6,7 +6,7 @@ try{
 await User.find({role:{$all:['sales executive','supervisor']}},(err,user)=>{
  if(err) return res.status(500).send({message:'server error'})
   if(user){
-   return res.status(200).render('adminPanel',{user:user})
+   return res.status(200).render('salesPanel',{user:user})
   }
 })
 }catch(error){
