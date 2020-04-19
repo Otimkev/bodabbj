@@ -1,0 +1,58 @@
+extends layout
+
+block content
+
+  ul.list-group.list-group-flush
+  .list.row
+   li.list-group-item.col-md-4 First Name
+   li.list-group-item.col-md-8 #{ boda.username}
+  .list.row
+   li.list-group-item.col-md-4 Last Name
+   li.list-group-item.col-md-8 #{boda.lastname}
+  .list.row
+   li.list-group-item.col-md-4 Current Date
+   li.list-group-item.col-md-8 #{boda.currentDate}
+  .list.row
+   li.list-group-item.col-md-4 Phone No.
+   li.list-group-item.col-md-8 #{boda.phone}
+  .list.row
+   li.list-group-item.col-md-4 Nationality
+   li.list-group-item.col-md-8 #{boda.nationality}
+  .list.row
+   li.list-group-item.col-md-4 Date Of Birth
+   li.list-group-item.col-md-8 #{boda.dob}
+  .list.row
+   li.list-group-item.col-md-4 NIN
+   li.list-group-item.col-md-8 #{boda.nin}
+  .list.row
+   li.list-group-item.col-md-4 Vehicle type
+   li.list-group-item.col-md-8 #{boda.vehicle}
+  h3 Referee Detail
+  .list.row
+   li.list-group-item.col-md-4 Referee First Name
+   li.list-group-item.col-md-8 #{boda.ref_firstname}
+  .list.row
+   li.list-group-item.col-md-4 Referee Last Name
+   li.list-group-item.col-md-8 #{boda.ref_lastname}
+  .list.row
+   li.list-group-item.col-md-4 Referee Date Of birth
+   li.list-group-item.col-md-8 #{boda.ref_dob}
+  .list.row
+   li.list-group-item.col-md-4 Down payment
+   li.list-group-item.col-md-8 #{boda.downpay}
+  .list.row
+   li.list-group-item.col-md-4 Marital Status
+   li.list-group-item.col-md-8 #{boda.marital_status}
+  .list.row
+   li.list-group-item.col-md-4 Other Loans
+   li.list-group-item.col-md-8 #{boda.other_loans}
+  .list.row
+   li.list-group-item.col-md-4 Stage Name
+   li.list-group-item.col-md-8 #{boda.stage_name}
+
+  a(href=`/sales/panel/${boda._id}/edit`)
+   button(class="btn btn-dark mt-4") Edit
+  a(href=`/sales/panel/${boda._id}/delete?_method=delete`)
+   button(class="btn btn-danger mt-4 ml-4") Delete
+  a(href='/sales/panel')
+   button(class="btn btn-dark mt-4 ml-4") Back

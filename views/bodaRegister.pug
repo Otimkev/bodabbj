@@ -1,0 +1,100 @@
+extend layout
+
+block content
+ form(method="POST",action="/boda/add",autocomplete='off',name='myform',onsubmit='return validate()')
+   .form-row
+    .form-group.col-md-4
+      label(for='firstname') First Name
+      input.form-control(name='username', type='text')
+      p.text-danger#para1.small
+    .form-group.col-md-4
+      label(for='lastname') Last Name
+      input.form-control(name='lastname',type='text')
+      p.text-danger#para2.small
+    .form-group.col-md-4
+      label(for='currentDate') Current Date
+      input.form-control(name='currentDate',type='date')
+      p.text-danger#para3.small
+   .form-row
+    .form-group.col-md-4
+     label(for='phone') Phone No.
+     input.form-control(name='phone', type='text')
+     p.text-danger#para4.small
+    .form-group.col-md-4
+     label(for='nationality') nationality
+     select(name='nationality').form-control
+      option(value='Default', selected='') Choose...
+      option(value='Ugandan') Ugandan
+      option(value='Kenyan') Kenyan
+      option(value='Tanzanian') Tanzanian
+      option(value='Rwandan') Rwandan
+     p.text-danger#para5.small
+    .form-group.col-md-4
+      label(for='dob') Date of Birth
+      input.form-control(name='dob', type='date')
+      p.text-danger#para6.small
+   .form-row
+    .form-group.col.md-6
+     label(for="nin") NIN
+     input.form-control(name="nin", type='text')
+     p.text-danger#para7.small
+    .form-group.col-md-6
+     label(for='vehicle') Vehicle type
+     select(name="vehicle").form-control
+      option(selected='' value="Default") Choose...
+      option(value="bodaboda") bodaboda
+      option(value="tukutuku") tukutuku
+     p.text-danger#para8.small
+   fieldset
+    legend Referee
+    .form-row
+     .form-group.col-md-4
+       label(for='ref_firstname') Referee First Name
+       input.form-control(name='ref_firstname', type='text')
+       p.text-danger#para9.small
+     .form-group.col-md-4
+       label(for='ref_lastname') Referee Last Name
+       input.form-control(name='ref_lastname', type='text')
+       p.text-danger#para10.small
+     .form-group.col-md-4
+       label(for='ref_ref_phone') Ref Phone
+       input.form-control(name='ref_phone', type='text')
+       p.text-danger#para11.small
+    .form-row
+     .form-group.col-md-4
+       label(for='ref_occupation') Referee occupation
+       input.form-control(name='ref_occupation', type='text')
+       p.text-danger#para12.small
+     .form-group.col-md-4
+       label(for='ref_dob') Referee Date Of Birth
+       input.form-control(name='ref_dob', type='date')
+       p.text-danger#para13.small
+     .form-group.col-md-4
+       label(for='downpay') Down Payment
+       input.form-control(name='downpay', type='text')
+       p.text-danger#para14.small
+    .form-row
+     .form-group.col-md-6
+       label(for='marital_status') Marital Status
+       select(name='marital_status').form-control
+        option(selected='' value="Default") Choose...
+        option(value="single") single
+        option(value="divoiced") divorced
+        option(value="married") married
+       p.text-danger#para15.small
+     .form-group.col-md-6
+       label(for='other_loans') Other Loans
+       input.form-control(name='other_loans', type='text')
+       p.text-danger#para16.small
+    .form-row
+     .form-group.col-md-6
+       label(for='stage_name') Stage Name
+       select(name='stage_name').form-control
+        option(selected='' value="Default") Choose...
+        option(value="lc1") lc1
+        option(value="lc3") lc3
+       p.text-danger#para17.small
+    button.btn.btn-dark(type='submit') Regiser
+ a(href='/sales/panel')
+  button(class="btn btn-info mt-4 ml-4") back
+    

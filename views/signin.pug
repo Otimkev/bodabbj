@@ -1,0 +1,17 @@
+extend main
+
+block content
+ .row.text-black
+  .col-xl-5.col-lg-6.col-md-8.col-sm-10.mx-auto.text-center.form.p-5
+   .px-2(style='margin-top:25%')
+    h3 Welcome
+    h4 Sign In
+    form.justify-content-center(action='/api/auth/signin' method="post" autocomplete='off')
+     .form-group
+      input.form-control(name='username',type='text', placeholder='Username')
+     .form-group
+      input.form-control(name='password',type='text', placeholder='Password')
+     .form-group
+       button.btn.btn-primary(type='submit',style='width:200px') Sign In
+    a(href='/api/auth/signup')
+     button.btn.btn-primary.mt-3(style='width:200px') Sign Up

@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title bbbj
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  body(style='height:100%')
+    nav.navbar.navbar-dark.bg-dark.navbar-expand-sm.py-0
+      a.navbar-brand(href='#') bbj
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon#navbarNav.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li
+          a(href='/') Home
+        li
+          a(href='/articles/add').ml-3 Add Article
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='#',style='margin-left:500px') logout
+
+    .container
+      h3(style='text-align:center') #{title}
+      block content
+      br  
+      footer(class="fixed-bottom bg-light",style='text-align:center;background-color')
+        h6 Copyright &copy; 2020
+    script(src='')

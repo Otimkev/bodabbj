@@ -1,0 +1,24 @@
+extend layout
+
+block content
+ form(method="POST",action="/register",autocomplete='off')
+  .form-group
+    label(for='username') User name
+    input.form-control(name='username', type='text')
+  .form-group
+    label(for='email') email
+    input.form-control(name='email',type='text')
+  .form-group
+    label(for='password') password
+    input.form-control(name='password',type='password')
+  .form-group
+    label(for='password2') Re-enter password
+    input.form-control(name='password2', type='password')
+  .form-group
+    label(for='currentDate') current Date
+    input.form-control(name='currentDate', type='date')
+  .form-group
+    label(for='role') Role
+    input.form-control(name='role', type='text')
+  button.btn.btn-dark(type='submit') Regiser
+  button.btn.btn-danger.mx-2(type='submit') Cancel

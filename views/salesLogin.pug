@@ -1,0 +1,11 @@
+extend layout
+
+block content
+ form(method="POST",action="/sales/login",autocomplete='off')
+  .form-group
+    label(for='username') User name
+    input.form-control(name='username', type='text')
+  .form-group
+    label(for='password') Password
+    input.form-control(name='password', type='text')
+  button.btn.btn-dark(type='submit') Submit
