@@ -27,9 +27,6 @@ block content
       label(for='phone') Phone/s contact
       input.form-control(name='phone', type='text')
     .form-group
-      label(for='supervisor') supervisors
-      input.form-control(name='supervisor', type='text')
-    .form-group
       label(for='workingdays') Number of working days
       input.form-control(name='workingdays', type='text')
     .form-group
@@ -38,12 +35,10 @@ block content
     .form-group
       label(for='role') Role
       select(name="role" type='text').form-control
-      option(value="Default" selected='') Choose...
-      option(value="admin") admin
-      option(value="sales executive") sales executive
-      option(value="supervisor") supervisor
+       option(value="Default") Choose...
+       option(value="supervisor" selected) supervisor
     .col
      button.btn.btn-success(type='submit') Regiser
-    .col
-     a(href='/panel')
-      button(class="btn btn-success mt-2") back
+  .col
+   a(href='/api/user/adminpanel')
+    button(class="btn btn-success mt-2") back

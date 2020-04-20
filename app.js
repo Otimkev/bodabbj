@@ -13,7 +13,7 @@ const methodOveride = require('method-override')
 const bcrypt = require('bcryptjs')
 
 //public files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static',express.static(path.join(__dirname, 'public')));
 //setting up rendering engine
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug')

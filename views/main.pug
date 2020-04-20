@@ -8,6 +8,7 @@ html
       a.navbar-brand(href='#') bbj
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon#navbarNav.collapse.navbar-collapse
+      if user
       ul.nav.navbar-nav
         li
           a(href='/') Home
@@ -18,13 +19,14 @@ html
           a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
             | Dropdown
           .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='#') Add
-            a.dropdown-item(href='#') Profile
+            a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+            a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+            a.dropdown-item(href='/api/user/supervisor_reg') Add admin
             .dropdown-divider
             a.dropdown-item(href='#') Logout
 
     .container
-      h3(style='text-align:center') #{title}
+      h4(style='text-align:center').mt-5 #{title}
       block content
       br  
       footer(class="fixed-bottom bg-light",style='text-align:center;background-color')
