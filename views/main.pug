@@ -8,22 +8,20 @@ html
       a.navbar-brand(href='#') bbj
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon#navbarNav.collapse.navbar-collapse
-      if user
-      ul.nav.navbar-nav
-        li
-          a(href='/') Home
-        li
-          a(href='/articles/add').ml-3 Add Article
       ul.nav.navbar-nav.navbar-left
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
             | Dropdown
           .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='/api/user/sales_reg') Add sales executive
-            a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
-            a.dropdown-item(href='/api/user/supervisor_reg') Add admin
-            .dropdown-divider
-            a.dropdown-item(href='#') Logout
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/supervisor_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href='/api/user/customer_reg') Add customer
+              a.dropdown-item(href='/api/auth/logout') Logout
+      ul.nav.navbar-nav
+        li.nav-item
+         a.dropdown-item(href='/api/auth/logout') welcome
 
     .container
       h4(style='text-align:center').mt-5 #{title}

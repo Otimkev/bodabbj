@@ -1,4 +1,4 @@
-extend layout
+extends main
 
 block content
  form(method="POST",action="/boda/add",autocomplete='off',name='myform',onsubmit='return validate()')
@@ -96,7 +96,7 @@ block content
        p.text-danger#para17.small
     .form-row
      .form-group
-      input(type="text" ,name='salesname', value=``,placeholder="salesname here")
+      input(type="text" ,name='salesname', value=``,placeholder=`${snn.username}`)
     button.btn.btn-dark(type='submit') Regiser
  a(href='/sales/panel')
   button(class="btn btn-info mt-4 ml-4") back

@@ -1,14 +1,14 @@
 extends main
 
 block content
- .row
+ .row(style='margin-top:10%')
   .col-sm-6.col-md-3
-   .card(style='width: 12rem;')
+   .card(style='width: 12rem;text-align:center')
+    h5 supervisor
     img.card-img-top.d-block.mx-auto(src='/static/img/user.png', alt='...',style='width:8rem; height:8rem;')
    .card-body
     p.card-text
-      | Supervisors
-    a.btn.btn-primary(href='#') Go somewhere
+    a.btn.btn-primary(href='/api/user/sales_list') View all
   .col-sm-6.col-md-3
    .card(style='width: 12rem;')
     img.card-img-top.d-block.mx-auto(src='/static/img/user.png', alt='...',style='width:8rem; height:8rem;')

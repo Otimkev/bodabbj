@@ -1,0 +1,27 @@
+extends main
+
+block content
+ table.table.table(style='text-align:center' )
+  thead
+    tr
+      th(scope='col') First name
+      th(scope='col') Last name
+      th(scope='col') Working days
+      th(scope='col') Supervisor
+      th(scope='col') ID
+      th
+  tbody
+   each users in user
+    tr
+      td= users.username
+      td= users.lastname
+      td= users.workingdays
+      td= users.supervisor
+      td= users.id
+      td
+       a(href=`/api/user/sales_detail/${users._id}`)
+        button(class='btn btn-info') view
+
+ a(href='/api/user/adminpanel')
+  button(class="btn btn-dark mt-2") back
+

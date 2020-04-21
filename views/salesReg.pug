@@ -1,7 +1,7 @@
 extend main
 
 block content
-  form(method="POST",action="/sales/register",autocomplete='off')
+  form(method="POST",action="/api/user/sales_reg",autocomplete='off')
     .form-group
       label(for='username') First Name
       input.form-control(name='username', type='text')
@@ -30,7 +30,7 @@ block content
       label(for='supervisor') Assign Supervisor
       select(name="supervisor" type='text').form-control
        each users in user
-        option(value=`Default` selected='Choose...')= users.username
+        option(value=`` selected='Choose...')= users.username
     .form-group
       label(for='workingdays') Number of working days
       input.form-control(name='workingdays', type='text')
@@ -40,10 +40,10 @@ block content
     .form-group
       label(for='role') Role
       select(name="role" type='text').form-control
-       option(value="Default") Choose...
+       option(value="") Choose...
        option(value="sales executive" selected) sales executive
     .col
-     button.btn.btn-success(type='submit') Regiser
+     button.btn.btn-dark(type='submit') Regiser
   .col
    a(href='/api/user/adminpanel')
     button(class="btn btn-success mt-2") back

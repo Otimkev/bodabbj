@@ -10,7 +10,7 @@ const pug = require('pug')
 const app = express();
 const path = require('path')
 const methodOveride = require('method-override')
-const bcrypt = require('bcryptjs')
+const cookie = require('cookie-session')
 
 //public files
 app.use('/static',express.static(path.join(__dirname, 'public')));
@@ -49,7 +49,7 @@ app.use(session({
  resave:true,
  saveUninitialized:true,
  cookie: {
-  maxAge: 1000 * 30
+  maxAge: 10000 * 30
 }
 }));
 app.use(passport.initialize())
@@ -86,7 +86,12 @@ passport.serializeUser(function(user, done) {
     });
     });
     }))
-
+    // app.set('trust proxy', 1) // trust first proxy
+ 
+    // app.use(cookie({
+    
+    //   keys: ['key1', 'key2']
+    // }))
 
 //import routes
 const authRoute = require('./routes/auth.routes')
