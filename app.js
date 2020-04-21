@@ -12,6 +12,7 @@ const path = require('path')
 const methodOveride = require('method-override')
 const cookie = require('cookie-session')
 
+
 //public files
 app.use('/static',express.static(path.join(__dirname, 'public')));
 //setting up rendering engine
@@ -26,7 +27,7 @@ app.use(methodOveride('_method',{methods:['POST','GET']}))
 
 //connnecting to mongodb
 mongoose.set('useNewUrlParser','true');
-mongoose.set('useUnifiedTopology','ture')
+mongoose.set('useUnifiedTopology','true')
 mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DB_STRING);
 
@@ -49,8 +50,8 @@ app.use(session({
  resave:true,
  saveUninitialized:true,
  cookie: {
-  maxAge: 10000 * 30
-}
+  maxAge: 1000 * 60 * 60 * 24 * 7
+},store:sessionStore
 }));
 app.use(passport.initialize())
 app.use(passport.session())
@@ -105,16 +106,7 @@ app.use('/api/user/',userRoute)
 
 
 // Logout form
-app.get('/logout', (req, res) => {
-  if (req.session) {
-      req.session.destroy(function (err) {
-          if (err) {
-          } else {
-             return res.redirect('/login');
-          }
-      })
-  }  
-})
+
 
 
 

@@ -35,9 +35,20 @@ return res.status(200).send({message:'fuck'})
  })
 
 //singout
-router.get('/logout',(req,res)=>{
- req.logout();
- res.redirect('/api/auth/signin')
+// router.get('/logout',(req,res)=>{
+//  req.logout();
+//  res.redirect('/api/auth/signin')
+// })
+
+router.get('/logout', (req, res) => {
+  if (req.session) {
+      req.session.destroy(function (err) {
+          if (err) {
+          } else {
+             return res.redirect('/api/auth/signin');
+          }
+      })
+  }  
 })
 
 router.use(function(req, res, next) {

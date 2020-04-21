@@ -1,15 +1,19 @@
 const User = require('../models/user.models')
 const bcrypt = require('bcryptjs')
-var snn;
+const agenda = require('agenda')
+const mongoose = require('mongoose')
 
+var snn
 exports.salesPanel = async(req,res)=>{
 try{
-  snn = req.user;
 
-await User.find({role:{$eq:'sales executive'}},(err,user)=>{
+
+snn = req.user
+console.log(snn)
+await User.find({salesname:{$eq:`${snn.username}`}},(err,user)=>{
  if(err) return res.status(500).send({message:'server error'})
   if(user){
-   return res.status(200).render('salesPanel',{title:`welcome`,user:user})
+   return res.status(200).render('salesPanel',{title:`welcome ${snn.username}`,user:user,})
   }
 })
 }catch(error){
@@ -102,3 +106,54 @@ console.log(error)
   }
 }
 
+//get cutomer detail
+exports.customerDetail = async(req,res)=>{
+  try{
+    await User.findById(req.params.customerId,(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.render('customerDetail',{title:'detail',user:user})
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}
+
+//get customer edit
+exports.customerEdit = async(req,res)=>{
+  try{
+    await User.findById(req.params.customerId,(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.render('customerEdit',{title:user.username,user:user})
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}
+
+//post customer edit
+exports.customerEditUpdate = async(req,res)=>{
+  try{
+    await User.findByIdAndUpdate(req.params.customerId,req.body,{new:true},(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.status(200).redirect(`/api/user/customer/${user._id}`)
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}
+
+//delete customer
+exports.customerDelete = async(req,res)=>{
+  try{
+    await User.findByIdAndRemove(req.params.customerId,(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.redirect('..')
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}

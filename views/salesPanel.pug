@@ -10,16 +10,15 @@ block content
       th(scope='col') Next payment
       th
   tbody
-  //-  each bodas in boda
-  //-   tr
-  //-     td= bodas.fullname
-  //-     td= bodas.balance
-  //-     td= bodas.vehicle
-  //-     td= bodas.next_pay
-  //-     td
-       a(href=`/sales/panel/${bodas._id}`)
+    each users in user
+     tr
+     td= users.username
+     td= users.balance
+     td= users.vehicle
+     td= users.next_pay
+     td
+       a(href=`/api/user/customer/${users._id}`)
         button(class='btn btn-info') view
- //-   
-      //- td= boda.age
- a(href='/api/user/adminpanel')
-  button(class="btn btn-dark mt-2") back
+ 
+//-  a(href='/api/user/adminpanel')
+//-   button(class="btn btn-dark mt-2") back

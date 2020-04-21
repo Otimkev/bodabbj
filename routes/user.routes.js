@@ -19,6 +19,15 @@ router.get('/sales_detail/:salesId',controllerSales.salesDetail)
 router.get('/salespanel',controllerSales.salesPanel)
 //customer registraon
 router.get('/customer_reg',ensureAuthenticated,controllerSales.customerReg)
+router.post('/customer_reg',controllerSales.customerRegister)
+//get customer detail
+router.get('/customer/:customerId',ensureAuthenticated,controllerSales.customerDetail)
+//get edit cutomer detail
+router.get('/customer_edit/:customerId',controllerSales.customerEdit)
+//submit update
+router.put('/customer_update/:customerId',controllerSales.customerEditUpdate)
+//delete customer
+router.get('/customer_delete/:customerId',controllerSales.customerDelete)
 
 //sales supervisor
   //add supervisor

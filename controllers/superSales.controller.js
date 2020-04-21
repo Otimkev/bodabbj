@@ -13,3 +13,19 @@ await User.find({role:{$all:['sales Exec','supervisor']}},(err,user)=>{
  console.log(error)
 }
 }
+
+agenda.define('send email report', {priority: 'high', concurrency: 10}, async job => {
+  const {to} = job.attrs.data;
+  await emailClient.send({
+    to,
+    from: 'example@example.com',
+    subject: 'Email Report',
+    body: '...'
+  });
+});
+
+(async function() {
+  const weeklyReport = agenda.create('send email report', {to: 'example@example.com'});
+  await agenda.start();
+  await weeklyReport.repeatEvery('1 week').save();
+})();
