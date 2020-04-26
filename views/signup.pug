@@ -1,44 +1,56 @@
 extends main
 
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/admin_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href=`/api/user/admin_reg`) Profile
+              a.dropdown-item(href='/api/auth/logout') Logout
+
 block content
-  .col-xl-5.col-lg-6.col-md-12.col-sm-10.mx-auto.text-center.form.p-5
    .p-2(style='margin-top:0.25%')
-    h3(style='font-weight:400') Sign up
     form(method="POST",action="/api/auth/signup",autocomplete='off')
-      .form-group
+     .form-row
+      .form-group.col-md-4
         label(for='username') First Name
         input.form-control(name='username', type='text',placeholder="Enter first name")
-      .form-group
+      .form-group.col-md-4
         label(for='lastname') Last Name
         input.form-control(name='lastname',type='text',placeholder="Enter last name")
-      .form-group
-        label(for='current_date') Current Date
-        input.form-control(name='current_date',type='date')
-      .form-group
+      .form-group.col-md-4
+        label(for='currentDate') Current Date
+        input.form-control(name='currentDate',type='date')
+     .form-row 
+      .form-group.col-md-4
         label(for='password') Password
         input.form-control(name='password', type='password',placeholder="Enter password")
-      .form-group
+      .form-group.col-md-4
         label(for='password2') Re-enter password
         input.form-control(name='password2', type='password',placeholder="Re-enter password")
-      .form-group
+      .form-group.col-md-4
         label(for='email') email
         input.form-control(name='email', type='text',placeholder="Enter email address")
-      .form-group
+     .form-row 
+      .form-group.col-md-4
         label(for='phone') Phone/s contact
         input.form-control(name='phone', type='text',placeholder="Enter phone")
-      .form-group
+      .form-group.col-md-4
         label(for='dob') Date Of Birth
         input.form-control(name='dob', type='date')
-      .form-group
+      .form-group.col-md-4
         label(for='role') Role
         select(name="role" type='text').form-control
-         option(value="Default" selected='') Choose...
+         option(value="Default" selected='') admin
          option(value="admin") admin
-         option(value="sales executive") sales executive
-         option(value="supervisor") supervisor
-      .col
+     .col-md.text-center
         button.btn.btn-success(type='submit',style='width:200px') Regiser
-      .col.mt-3
+     .col.mt-3.text-center
         a(href='/api/auth/signin') Already have an account? Sign In
          
     

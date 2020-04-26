@@ -1,7 +1,5 @@
 const User = require('../models/user.models')
 const bcrypt = require('bcryptjs')
-const agenda = require('agenda')
-const mongoose = require('mongoose')
 
 var snn
 exports.salesPanel = async(req,res)=>{
@@ -75,6 +73,31 @@ exports.salesDetail = async(req,res)=>{
   }
 }
 
+//sales edit
+exports.salesEditUpdate = async(req,res)=>{
+  try{
+    await User.findByIdAndUpdate(req.params.salesId,req.body,{new:true},(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.status(200).redirect('/api/user/sales_list')
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}
+
+//sales delete
+exports.salesDelete = async(req,res)=>{
+  try{
+    await User.findByIdAndRemove(req.params.salesId,(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.redirect('/api/user/sales_list')
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}
 
 //get customer registration
 exports.customerReg = async(req,res)=>{
@@ -150,7 +173,7 @@ exports.customerDelete = async(req,res)=>{
   try{
     await User.findByIdAndRemove(req.params.customerId,(err,user)=>{
       if(err) return res.status(500).send({message:'server error'})
-       if(user) return res.redirect('..')
+       if(user) return res.redirect('/api/user/salespanel')
     })
  
   }catch(error){

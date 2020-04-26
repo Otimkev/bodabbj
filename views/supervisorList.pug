@@ -19,7 +19,6 @@ block content
       th(scope='col') First name
       th(scope='col') Last name
       th(scope='col') Working days
-      th(scope='col') Supervisor
       th(scope='col') ID
       th
   tbody
@@ -28,10 +27,9 @@ block content
       td= users.username
       td= users.lastname
       td= users.workingdays
-      td= users.supervisor
       td= users.id
       td
-       a(href=`/api/user/sales_detail/${users._id}`)
+       a(href=`/api/user/supervisor_detail/${users._id}`)
         img(src="/static/img/eye.png", alt="", srcset="")
 
  a(href='/api/user/adminpanel')

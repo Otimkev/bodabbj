@@ -26,8 +26,8 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(methodOveride('_method',{methods:['POST','GET']}))
 
 //connnecting to mongodb
-mongoose.set('useNewUrlParser','true');
-mongoose.set('useUnifiedTopology','true')
+mongoose.set('useNewUrlParser',true);
+mongoose.set('useUnifiedTopology',true)
 mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DB_STRING);
 

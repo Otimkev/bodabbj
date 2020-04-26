@@ -5,30 +5,19 @@ html
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   body(style='height:100%')
     nav.navbar.navbar-dark.bg-dark.navbar-expand-sm.py-0.fixed-top
-      a.navbar-brand(href='#') bbj
+      a.navbar-brand(href='#')
+       img(src="/static/img/scooter.png", alt="", srcset="")
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon#navbarNav.collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-left
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-            | Dropdown
-          .dropdown-menu(aria-labelledby='navbarDropdown')
-              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
-              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
-              a.dropdown-item(href='/api/user/supervisor_reg') Add admin
-              .dropdown-divider
-              a.dropdown-item(href='/api/user/customer_reg') Add customer
-              a.dropdown-item(href='/api/auth/logout') Logout
-      ul.nav.navbar-nav
-        li.nav-item
-         a.dropdown-item(href='/api/auth/logout') welcome
+      block navigation
+
 
     .container
-      h4(style='text-align:center').mt-5 #{title}
+      h3(style='text-align:center').mt-5 #{title}
       block content
       br  
       footer(class="fixed-bottom bg-light",style='text-align:center;background-color')
-        h6 Copyright &copy; 2020
+        h6 bbbj kevinotim Copyright &copy; 2020
     script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous")

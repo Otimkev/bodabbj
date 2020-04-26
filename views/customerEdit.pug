@@ -1,4 +1,14 @@
-extend main
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/customer_reg') Add customer
+              .dropdown-divider
+              a.dropdown-item(href='/api/auth/logout') Logout
 
 block content
  form(method="POST",action=`/api/user/customer_update/${user._id}?_method=put`,autocomplete='off')
@@ -61,23 +71,25 @@ block content
        label(for='downpay') Down Payment
        input.form-control(name='downpay', type='text',value=`${user.downpay}`,placeholder=`${user.downpay}`)
     .form-row
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='marital_status') Marital Status
        select(name='marital_status').form-control
         option(selected='',) #{user.marital_status}
         option(value="single") single
         option(value="divorced") divorced
         option(value="married") married
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='other_loans') Other Loans
        input.form-control(name='other_loans', type='text',value=`${user.other_loans}`,placeholder=`${user.other_loans}`)
-    .form-row
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='stage_name') Stage Name
        select(name='stage_name',value=`${user.stage_name}`,placeholder=`${user.stage_name}`).form-control
         option(selected='',)  #{user.stage_name}
         option(value="lc1") lc1
         option(value="lc3") lc3
-    button.btn.btn-dark(type='submit') submit
-    a(href=``)
-     button(class="btn btn-info mt-4 ml-4") back
+    .form-row(style='text-align:center')
+     .form-group.col-md
+      button.btn.btn-success(type='submit',style='width:100px') submit
+ .col-md.text-center
+  a(href=`/api/user/customer/${user._id}`)
+   button(class="btn btn-dark",style='width:100px').mb-3 back

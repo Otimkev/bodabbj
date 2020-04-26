@@ -1,45 +1,57 @@
 extends main
 
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/admin_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href=`/api/user/admin_reg`) Profile
+              a.dropdown-item(href='/api/auth/logout') Logout
+
 block content
- .row(style='margin-top:10%')
-  .col-sm-6.col-md-3
-   .card(style='width: 12rem;text-align:center')
-    h5 supervisor
-    img.card-img-top.d-block.mx-auto(src='/static/img/user.png', alt='...',style='width:8rem; height:8rem;')
-   .card-body
-    p.card-text
-    a.btn.btn-primary(href='/api/user/sales_list') View all
-  .col-sm-6.col-md-3
+ .row(style='margin-top:5%')
+  .col-sm-6.col-md-3(style='background-color:')
    .card(style='width: 12rem;')
-    img.card-img-top.d-block.mx-auto(src='/static/img/user.png', alt='...',style='width:8rem; height:8rem;')
-   .card-body
-    p.card-text
-      | Sales Executives
-  .col-sm-6.col-md-3
+    img.card-img-top.mx-auto(src='/static/img/account1.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{num}
+     p.card-text.text-center
+      | Supervisors
+     a.btn.btn-primary(href='/api/user/supervisor_list' style='width:100%') view all
+
+
+
+  .col-sm-6.col-md-3(style='background-color:')
    .card(style='width: 12rem;')
-    img.card-img-top.d-block.mx-auto(src='/static/img/user.png', alt='...',style='width:8rem; height:8rem;')
-   .card-body
-    p.card-text
-      | bodaboda
-  .col-sm-6.col-md-3
+    img.card-img-top.mx-auto(src='/static/img/account.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{num1}
+     p.card-text.text-center
+      | Sales executives
+     a.btn.btn-primary(href='/api/user/sales_list' style='width:100%') view all
+
+
+  .col-sm-6.col-md-3(style='background-color:')
    .card(style='width: 12rem;')
-    img.card-img-top.d-block.mx-auto(src='/static/img/user.png', alt='...',style='width:8rem; height:8rem;')
-   .card-body
-    p.card-text
-      | Tukutuku
+    img.card-img-top.mx-auto(src='/static/img/scooter4.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{boda}
+     p.card-text.text-center
+      | Bodabodas
+     a.btn.btn-primary(href='/api/user/sales_list' style='width:100%') view all
 
 
-
-
-
-//-  table.table.table
-//-   thead
-//-     tr
-//-       th(scope='col') First Name
-//-       th(scope='col') Last name
-//-   tbody
-//-    each users in user
-//-     tr
-//-       td #{users.username}
-//-       td #{users.lastname}
-      //- td= boda.age
+  .col-sm-6.col-md-3(style='background-color:')
+   .card(style='width: 12rem;')
+    img.card-img-top.mx-auto(src='/static/img/scooter1.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{tuku}
+     p.card-text.text-center
+      | Tukutukus
+     a.btn.btn-primary(href='#' style='width:100%') view all
+   

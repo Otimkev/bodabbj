@@ -15,18 +15,17 @@ block content
   thead
     tr
       th(scope='col') Full Name
-      th(scope='col') Balance
+      th(scope='col') Last Name
       th(scope='col') Vehicle type
-      th(scope='col') Next payment
       th(scope='col') Status
       th
   tbody
     each users in user
      tr
      td= users.username
-     td= users.remainingBal
-     td= users.vehicle
-     td= users.next
+     td= users.lastname
+     td what
+     td is this
      td
       h6(style='color:green') ok
      td

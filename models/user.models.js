@@ -1,23 +1,13 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
-const Agenda = require('agenda');
 
-mongoose.set('useUnifiedTopology', true);
-
-const connectionString = `mongodb://127.0.0.1/applesdb`;
-
-const agenda = new Agenda({
-    db: {address: connectionString, collection: 'ourScheduleCollectionName'},
-    processEvery: '2 seconds'
-});
 
 const AdminSchema = new mongoose.Schema({
  username:String,
 //  firstname:String,
 lastname:String,
  currentDate:{
-  type:Date,
-  default:Date.now()
+  type:String,
  },
  password:String,
  id:String,
@@ -26,7 +16,7 @@ lastname:String,
  supervisor:String,
  workingdays:Number,
  dob:{
-   type:Date,
+   type:String,
  },
  role:{
    type:String,
@@ -78,21 +68,22 @@ AdminSchema.virtual('remainingBal').get(function(){
 })
 
 
-AdminSchema.virtual('dewdate').get(function(){
-  agenda.define('nextPayReminder', {priority: 'high', concurrency: 10}, async job => {
-    //const {to} = job.attrs.data;
-    await User.send({
 
-    });
-  });
-  
-  (async function() {
-    const weeklyReport = agenda.create('send email report');
-    await agenda.start();
-    await weeklyReport.repeatEvery('12 seconds').save();
-  })();
-  
+AdminSchema.virtual('next').get(function(){
+  let customer = this
+  let date = new Date(customer.currentDate)
+    var d = date.getDate();
+    date.setMonth(date.getMonth() + +1);
+     if (date.getDate() != d) {
+      date.setDate(0);
+     }
+    return date;
+
 })
+ 
+
+
+
 const Admin = mongoose.model('Admin',AdminSchema);
 module.exports = Admin;
 

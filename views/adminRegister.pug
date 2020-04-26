@@ -1,24 +1,40 @@
-extend layout
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/admin_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href=`/api/user/admin_reg`) Profile
+              a.dropdown-item(href='/api/auth/logout') Logout
 
 block content
- form(method="POST",action="/register",autocomplete='off')
-  .form-group
+ form(method="POST",action="/register",autocomplete='off').mx-auto
+  .form-group.col-md-4
     label(for='username') User name
     input.form-control(name='username', type='text')
-  .form-group
+  .form-group.col-md-4
     label(for='email') email
     input.form-control(name='email',type='text')
-  .form-group
+  .form-group.col-md-4
     label(for='password') password
     input.form-control(name='password',type='password')
-  .form-group
+  .form-group.col-md-4
     label(for='password2') Re-enter password
     input.form-control(name='password2', type='password')
-  .form-group
+  .form-group.col-md-4
     label(for='currentDate') current Date
     input.form-control(name='currentDate', type='date')
-  .form-group
+  .form-group.col-md-4
     label(for='role') Role
-    input.form-control(name='role', type='text')
-  button.btn.btn-dark(type='submit') Regiser
-  button.btn.btn-danger.mx-2(type='submit') Cancel
+    input.form-control(name='role', type='text',value='admin',placeholder='admin')
+  .col.text-center
+     button.btn.btn-success(type='submit',style='width:100px') Regiser
+ .col.text-center
+   a(href='/api/user/adminpanel')
+    button(class="btn btn-dark mt-2 mb-3",style='width:100px;text-align:center') back

@@ -1,17 +1,29 @@
 extend main
 
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Contact
+              a.dropdown-item(href='/api/user/supervisor_reg') FAQ
+              a.dropdown-item(href='/api/user/signin') Home
+              
 block content
  .row.text-black
-  .col-xl-5.col-lg-6.col-md-8.col-sm-10.mx-auto.text-center.form.p-5
-   .px-2(style='margin-top:25%')
-    h3 Welcome
+  .col-xl-5.col-lg-6.col-md-4.col-sm-12.mx-auto.text-center.form
+   .px-2(style='margin-top:12%')
+    img(src='/static/img/scooter1.png' style='width:100px;hieght:100px;color:red').m-3
+    h5 Welcome to Bodaboda Banja
     h4 Sign In
-    form.justify-content-center(action='/api/auth/signin' method="post" autocomplete='off')
+    form.justify-content-center.mt-3(action='/api/auth/signin' method="post" autocomplete='off',style='text-align:center')
      .form-group
-      input.form-control(name='username',type='text', placeholder='Username')
+      input.form-control.mx-auto(name='username',type='text', placeholder='Username',style='width:250px;text-align:center')
      .form-group
-      input.form-control(name='password',type='text', placeholder='Password')
+      input.form-control.mx-auto(name='password',type='password', placeholder='Password',style='width:250px;text-align:center' )
      .form-group
-       button.btn.btn-primary(type='submit',style='width:200px') Sign In
-    a(href='/api/auth/signup')
-     button.btn.btn-primary.mt-3(style='width:200px') Sign Up
+       button.btn.btn-outline-primary(type='submit',style='width:100px') Sign In
+    if user
+     a(href='/api/auth/signup')
+      button.btn.btn-primary(style='width:200px') Sign Up

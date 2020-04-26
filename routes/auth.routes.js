@@ -26,7 +26,7 @@ router.post("/signin", passport.authenticate("login",{
   if(user){
    if(user.role == 'admin') return res.status(200).redirect('/api/user/adminpanel')
    if(user.role == 'sales executive') return res.status(200).redirect('/api/user/salespanel')
-   if(user.role == 'supervisor') return res.status(200).send({message:'hello supervisor'})
+   if(user.role == 'supervisor') return res.status(200).redirect('/api/user/supervisorpanel')
     else{
 return res.status(200).send({message:'fuck'})
     }

@@ -1,59 +1,78 @@
 extends main
 
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/customer_reg') Add customer
+              .dropdown-divider
+              a.dropdown-item(href='/api/auth/logout') Logout
+
 block content
 
-  ul.list-group.list-group-flush
-  .list.row
-   li.list-group-item.col-md-4 First Name
-   li.list-group-item.col-md-8 #{ user.username}
-  .list.row
-   li.list-group-item.col-md-4 Last Name
-   li.list-group-item.col-md-8 #{user.lastname}
-  .list.row
-   li.list-group-item.col-md-4 Current Date
-   li.list-group-item.col-md-8 #{user.currentDate}
-  .list.row
-   li.list-group-item.col-md-4 Phone No.
-   li.list-group-item.col-md-8 #{user.phone}
-  .list.row
-   li.list-group-item.col-md-4 Nationality
-   li.list-group-item.col-md-8 #{user.nationality}
-  .list.row
-   li.list-group-item.col-md-4 Date Of Birth
-   li.list-group-item.col-md-8 #{user.dob}
-  .list.row
-   li.list-group-item.col-md-4 NIN
-   li.list-group-item.col-md-8 #{user.nin}
-  .list.row
-   li.list-group-item.col-md-4 Vehicle type
-   li.list-group-item.col-md-8 #{user.vehicle}
-  h3 Referee Detail
-  .list.row
-   li.list-group-item.col-md-4 Referee First Name
-   li.list-group-item.col-md-8 #{user.ref_firstname}
-  .list.row
-   li.list-group-item.col-md-4 Referee Last Name
-   li.list-group-item.col-md-8 #{user.ref_lastname}
-  .list.row
-   li.list-group-item.col-md-4 Referee Date Of birth
-   li.list-group-item.col-md-8 #{user.ref_dob}
-  .list.row
-   li.list-group-item.col-md-4 Down payment
-   li.list-group-item.col-md-8 #{user.downpay}
-  .list.row
-   li.list-group-item.col-md-4 Marital Status
-   li.list-group-item.col-md-8 #{user.marital_status}
-  .list.row
-   li.list-group-item.col-md-4 Other Loans
-   li.list-group-item.col-md-8 #{user.other_loans}
-  .list.row
-   li.list-group-item.col-md-4 Stage Name
-   li.list-group-item.col-md-8 #{user.stage_name}
+  table.table.table-sm(style='')
+   thead
+    tr
+     th(scope='col') Fields
+     th(scope='col') Data
+     th
+   tbody
+    tr
+     td First Name
+     td #{user.username}
+    tr
+     td Last Name
+     td #{user.lastname}
+    tr
+     td Current Date
+     td #{user.currentDate}
+    tr
+     td Phone
+     td #{user.phone}
+    tr
+     td Nationality
+     td #{user.nationality}
+    tr
+     td Date Of Birth
+     td #{user.dob}
+    tr
+     td NIN
+     td #{user.nin}
+    tr
+     td Vehicle Type
+     td #{user.vehicle}
+    tr
+     td Referee First Name
+     td #{user.ref_firstname}
+    tr
+     td Referee Last Name
+     td #{user.ref_lastname}
+    tr
+     td Referee Date Of Birth
+     td #{user.ref_dob}
+    tr
+     td Down payment
+     td #{user.downpay}
+    tr
+     td Marital Status
+     td #{user.marital_status}
+    tr
+     td Other Loans
+     td #{user.other_loans}
+    tr
+     td Stage Name
+     td #{user.stage_name}
   .row
-   .col.mb-4
+   .col-md(style='text-align:center')
     a(href=`/api/user/customer_edit/${user._id}`)
-     button(class="btn btn-dark mt-4" style='width:100px') Edit
-    a(href=`/api/user/customer_update/${user._id}?_method=put`)
-     button(class="btn btn-danger mt-4 ml-4" style='width:100px') Delete
+     button(class="btn btn-success mt-3" style='width:100px') Edit
+  .row
+   .col-md.text-center
     a(href='/api/user/salespanel')
-     button(class="btn btn-dark mt-4 ml-4" style='width:100px') Back
+     button(class="btn btn-dark mt-2" style='width:100px') Back
+  .row
+   .col-md.text-center
+    a(href=`/api/user/customer_delete/${user._id}?_method=delete`)
+     button(class="btn btn-danger mt-2" style='width:100px') Delete

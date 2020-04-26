@@ -13,7 +13,7 @@ block content
       p.text-danger#para2.small
     .form-group.col-md-4
       label(for='currentDate') Current Date
-      input.form-control(name='currentDate',type='date')
+      input.form-control(name='currentDate',type='date',value=new Date)
       p.text-danger#para3.small
    .form-row
     .form-group.col-md-4
@@ -34,11 +34,11 @@ block content
       input.form-control(name='dob', type='date')
       p.text-danger#para6.small
    .form-row
-    .form-group.col.md-6
+    .form-group.col.md-4
      label(for="nin") NIN
      input.form-control(name="nin", type='text')
      p.text-danger#para7.small
-    .form-group.col-md-6
+    .form-group.col-md-4
      label(for='vehicle') Vehicle type
      select(name="vehicle").form-control
       option(selected='' value="Default") Choose...
@@ -74,7 +74,7 @@ block content
        input.form-control(name='downpay', type='text')
        p.text-danger#para14.small
     .form-row
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='marital_status') Marital Status
        select(name='marital_status').form-control
         option(selected='' value="Default") Choose...
@@ -82,12 +82,11 @@ block content
         option(value="divoiced") divorced
         option(value="married") married
        p.text-danger#para15.small
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='other_loans') Other Loans
        input.form-control(name='other_loans', type='text')
        p.text-danger#para16.small
-    .form-row
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='stage_name') Stage Name
        select(name='stage_name').form-control
         option(selected='' value="Default") Choose...
@@ -96,7 +95,10 @@ block content
         p.text-danger#para17.small
     .form-row
      .form-group.col.md-6
-      input(type="text",name='salesname', value=`${snn.username}`,placeholder=`${snn.username}`)
+      input(type="text",name='salesname', hidden,value=`${snn.username}`,placeholder=`${snn.username}`)
+     .form-group.col.md-6
+      label(for='generateId') Generate ID
+      input.form-control(name='generateId')
     .row(style='text-align:center')
      .form-group
        button.btn.btn-dark(type='submit' style='width:100px') Register

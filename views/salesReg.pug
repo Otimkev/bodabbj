@@ -1,49 +1,67 @@
-extend main
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/admin_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href=`/api/user/admin_reg`) Profile
+              a.dropdown-item(href='/api/auth/logout') Logout
 
 block content
   form(method="POST",action="/api/user/sales_reg",autocomplete='off')
-    .form-group
+   .form-row   
+    .form-group.col-md-4
       label(for='username') First Name
       input.form-control(name='username', type='text')
-    .form-group
+    .form-group.col-md-4
       label(for='lastname') Last Name
       input.form-control(name='lastname',type='text')
-    .form-group
-      label(for='current_date') Current Date
-      input.form-control(name='current_date',type='date')
-    .form-group
+    .form-group.col-md-4
+      label(for='currentDate') Current Date
+      input.form-control(name='currentDate',type='date')
+   .form-row 
+    .form-group.col-md-4
       label(for='password') Password
       input.form-control(name='password', type='password')
-    .form-group
+    .form-group.col-md-4
       label(for='password2') Password2
       input.form-control(name='password2', type='password')
-    .form-group
+    .form-group.col-md-4
       label(for='id') ID
       input.form-control(name='id', type='text') 
-    .form-group
+   .form-row 
+    .form-group.col-md-4
       label(for='email') email
       input.form-control(name='email', type='text')
-    .form-group
+    .form-group.col-md-4
       label(for='phone') Phone/s contact
       input.form-control(name='phone', type='text')
-    .form-group
+    .form-group.col-md-4
       label(for='supervisor') Assign Supervisor
       select(name="supervisor" type='text').form-control
        each users in user
         option(value=`` selected='Choose...')= users.username
-    .form-group
+   .form-row
+    .form-group.col-md-4
       label(for='workingdays') Number of working days
       input.form-control(name='workingdays', type='text')
-    .form-group
+    .form-group.col-md-4
       label(for='dob') Date Of Birth
       input.form-control(name='dob', type='date')
-    .form-group
+    .form-group.col-md-4
       label(for='role') Role
       select(name="role" type='text').form-control
        option(value="") Choose...
        option(value="sales executive" selected) sales executive
-    .col
-     button.btn.btn-dark(type='submit') Regiser
-  .col
-   a(href='/api/user/adminpanel')
-    button(class="btn btn-success mt-2") back
+   .form-row.text-center
+    .form-group.col-md
+     button.btn.btn-dark.text-center(type='submit' style='width:100px') Regiser
+   .col.text-center
+    a(href='/api/user/adminpanel')
+     button(class="btn btn-success " style='width:100px') back
