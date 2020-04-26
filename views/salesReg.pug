@@ -14,27 +14,33 @@ block navigation
               a.dropdown-item(href='/api/auth/logout') Logout
 
 block content
-  form(method="POST",action="/api/user/sales_reg",autocomplete='off')
+  form(method="POST",action="/api/user/sales_reg",autocomplete='off',name='myform',onsubmit= 'return salesValidation()')
    .form-row   
     .form-group.col-md-4
       label(for='username') First Name
       input.form-control(name='username', type='text')
+      p.text-danger#paras1.small
     .form-group.col-md-4
       label(for='lastname') Last Name
       input.form-control(name='lastname',type='text')
+      p.text-danger#paras2.small
     .form-group.col-md-4
       label(for='currentDate') Current Date
       input.form-control(name='currentDate',type='date')
+      p.text-danger#paras3.small
    .form-row 
     .form-group.col-md-4
       label(for='password') Password
       input.form-control(name='password', type='password')
+      p.text-danger#paras4.small
     .form-group.col-md-4
       label(for='password2') Password2
       input.form-control(name='password2', type='password')
+      p.text-danger#paras5.small
     .form-group.col-md-4
       label(for='id') ID
-      input.form-control(name='id', type='text') 
+      input.form-control(name='id', type='text')
+      p.text-danger#paras6.small 
    .form-row 
     .form-group.col-md-4
       label(for='email') email
@@ -42,6 +48,7 @@ block content
     .form-group.col-md-4
       label(for='phone') Phone/s contact
       input.form-control(name='phone', type='text')
+      p.text-danger#paras7.small
     .form-group.col-md-4
       label(for='supervisor') Assign Supervisor
       select(name="supervisor" type='text').form-control
@@ -51,9 +58,11 @@ block content
     .form-group.col-md-4
       label(for='workingdays') Number of working days
       input.form-control(name='workingdays', type='text')
+      p.text-danger#paras8.small
     .form-group.col-md-4
       label(for='dob') Date Of Birth
       input.form-control(name='dob', type='date')
+      p.text-danger#paras9.small
     .form-group.col-md-4
       label(for='role') Role
       select(name="role" type='text').form-control
@@ -61,7 +70,9 @@ block content
        option(value="sales executive" selected) sales executive
    .form-row.text-center
     .form-group.col-md
-     button.btn.btn-dark.text-center(type='submit' style='width:100px') Regiser
-   .col.text-center
+     button.btn.btn-success.text-center(type='submit' style='width:100px') Regiser
+   .col.text-center.mb-2
+     button(class="btn btn-info",type='reset',style='width:100px') Reset
+  .col.text-center.mb-3
     a(href='/api/user/adminpanel')
-     button(class="btn btn-success " style='width:100px') back
+     button(class="btn btn-dark " style='width:100px') back

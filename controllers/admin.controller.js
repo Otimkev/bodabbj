@@ -51,7 +51,7 @@ exports.profileDetail = async(req,res)=>{
 
 
 //get list of all supervisors
-exports.sales_lis = async(req,res)=>{
+exports.sales_list = async(req,res)=>{
   try{
 User.find({role:{$in:'sales executive'}},(err,user)=>{
   if(err) return res.status(500).send({message:'server error'})
@@ -62,3 +62,52 @@ User.find({role:{$in:'sales executive'}},(err,user)=>{
   }
 }
 
+//show bodaboda numbers
+exports.boda_list = async(req,res)=>{
+  try{
+User.find({vehicle:{$in:'bodaboda'}},(err,user)=>{
+  if(err) return res.status(500).send({message:'server error'})
+   if(user) return res.status(200).render('bodaNo',{title:'Bodaboda Customers',user:user})
+})
+  }catch(error){
+
+  }
+}
+
+//show tukutuku numbers
+exports.tukutuku_list = async(req,res)=>{
+  try{
+User.find({vehicle:{$in:'tukutuku'}},(err,user)=>{
+  if(err) return res.status(500).send({message:'server error'})
+   if(user) return res.status(200).render('tukuNo',{title:'Tukutuku Customers',user:user})
+})
+  }catch(error){
+
+  }
+}
+
+//show bodaboda list detail
+exports.bodaDetailAdmin = async(req,res)=>{
+  try{
+    await User.findById(req.params.bodaId,(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.render('bodaDetail',{title:user.username,user:user})
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}
+
+//show tukutuku list detail
+exports.tukuDetailAdmin = async(req,res)=>{
+  try{
+    await User.findById(req.params.tukuId,(err,user)=>{
+      if(err) return res.status(500).send({message:'server error'})
+       if(user) return res.render('tukuDetail',{title:user.username,user:user})
+    })
+ 
+  }catch(error){
+    console.log(error)
+  }
+}

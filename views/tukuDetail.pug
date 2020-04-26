@@ -1,0 +1,70 @@
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/customer_reg') Add customer
+              .dropdown-divider
+              a.dropdown-item(href='/api/auth/logout') Logout
+
+block content
+
+  table.table.table-sm(style='')
+   thead
+    tr
+     th(scope='col') Fields
+     th(scope='col') Data
+     th
+   tbody
+    tr
+     td First Name
+     td #{user.username}
+    tr
+     td Last Name
+     td #{user.lastname}
+    tr
+     td Current Date
+     td #{user.currentDate}
+    tr
+     td Phone
+     td #{user.phone}
+    tr
+     td Nationality
+     td #{user.nationality}
+    tr
+     td Date Of Birth
+     td #{user.dob}
+    tr
+     td NIN
+     td #{user.nin}
+    tr
+     td Vehicle Type
+     td #{user.vehicle}
+    tr
+     td Referee First Name
+     td #{user.ref_firstname}
+    tr
+     td Referee Last Name
+     td #{user.ref_lastname}
+    tr
+     td Referee Date Of Birth
+     td #{user.ref_dob}
+    tr
+     td Down payment
+     td #{user.downpay}
+    tr
+     td Marital Status
+     td #{user.marital_status}
+    tr
+     td Other Loans
+     td #{user.other_loans}
+    tr
+     td Stage Name
+     td #{user.stage_name}
+  .row.mb-3
+   .col-md.text-center
+    a(href='/api/user/tuku_list')
+     button(class="btn btn-dark mt-2" style='width:100px') Back

@@ -63,7 +63,7 @@ exports.supervisorDetail = async(req,res)=>{
   }
 }
 
-//sales edit
+//supervisor edit
 exports.superEditUpdate = async(req,res)=>{
   try{
     await User.findByIdAndUpdate(req.params.superId,req.body,{new:true},(err,user)=>{

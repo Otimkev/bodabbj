@@ -10,6 +10,13 @@ router.get('/adminpanel',controllerAdmin.adminPanel)
 //Register admin
 router.get('/admin_reg',controllerAdmin.adminRgister)
 router.get('/profile/:adminId',controllerAdmin.profileDetail)
+//bodaboda List
+router.get('/boda_list',controllerAdmin.boda_list)
+router.get('/tuku_list',controllerAdmin.tukutuku_list)
+//boda detail view admin side
+router.get('/boda_detail/:bodaId',controllerAdmin.bodaDetailAdmin)
+//tuku detail view admin side
+router.get('/tuku_detail/:tukuId',controllerAdmin.tukuDetailAdmin)
 //sales
   //add sales
 router.get('/sales_reg',controllerSales.addSales)
@@ -36,7 +43,8 @@ router.put('/customer_update/:customerId',controllerSales.customerEditUpdate)
 //delete customer
 router.delete('/customer_delete/:customerId',controllerSales.customerDelete)
 
-//sales supervisor
+//SUPERVISOR
+//supervisor panel
 router.get('/supervisorpanel',controllerSupervisor.superPanel)
   //add supervisor
 router.get('/supervisor_reg',controllerSupervisor.addsupervisor)
