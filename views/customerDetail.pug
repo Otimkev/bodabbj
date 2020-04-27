@@ -64,6 +64,9 @@ block content
     tr
      td Stage Name
      td #{user.stage_name}
+    tr
+     td Customer Id
+     td #{user.id}
   .row
    .col-md(style='text-align:center')
     a(href=`/api/user/customer_edit/${user._id}`)
@@ -73,6 +76,6 @@ block content
     a(href='/api/user/salespanel')
      button(class="btn btn-dark mt-2" style='width:100px') Back
   .row
-   .col-md.text-center
+   .col-md.text-center.mb-3
     a(href=`/api/user/customer_delete/${user._id}?_method=delete`)
      button(class="btn btn-danger mt-2" style='width:100px') Delete

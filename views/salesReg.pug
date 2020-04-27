@@ -53,7 +53,7 @@ block content
       label(for='supervisor') Assign Supervisor
       select(name="supervisor" type='text').form-control
        each users in user
-        option(value=`` selected='Choose...')= users.username
+        option(value=`${users.username}` selected='')= users.username
    .form-row
     .form-group.col-md-4
       label(for='workingdays') Number of working days

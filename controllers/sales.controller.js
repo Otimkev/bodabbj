@@ -65,8 +65,13 @@ exports.salesList = async(req,res)=>{
 exports.salesDetail = async(req,res)=>{
   try{
     await User.findById(req.params.salesId,(err,user)=>{
-      if(err) res.status(500).send({message:'server error'})
-       if(user) res.status(200).render('salesDetail',{title:user.username,user:user})
+      if(err) return res.status(500).send({message:'server error'})
+        User.find({role:{$eq:'supervisor'}},(err,supervisor)=>{
+          if(err) console.log(err)
+          if(supervisor) res.status(200).render('salesDetail',{title:user.username,user:user,supervisor:supervisor})
+        })
+
+      
     })
   }catch(error){
     console.log(error)
@@ -134,7 +139,7 @@ exports.customerDetail = async(req,res)=>{
   try{
     await User.findById(req.params.customerId,(err,user)=>{
       if(err) return res.status(500).send({message:'server error'})
-       if(user) return res.render('customerDetail',{title:'detail',user:user})
+       if(user) return res.render('customerDetail',{title:user.username+' details',user:user})
     })
  
   }catch(error){

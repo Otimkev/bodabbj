@@ -39,10 +39,10 @@ block content
       label(for='dob') Date of Birth
       input.form-control(name='dob', type='date',value=`${user.bod}`,placeholder=`${user.dob}`)
    .form-row
-    .form-group.col.md-6
+    .form-group.col-md-4
      label(for="nin") NIN
      input.form-control(name="nin", type='text',value=`${user.nin}`,placeholder=`${user.nin}`)
-    .form-group.col-md-6
+    .form-group.col-md-4
      label(for='vehicle') Vehicle type
      select(name="vehicle").form-control
       option(selected=``) #{user.vehicle}

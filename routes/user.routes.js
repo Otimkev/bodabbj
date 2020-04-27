@@ -56,7 +56,7 @@ router.get('/supervisor_list',controllerSupervisor.supervisor_list)
 router.get('/supervisor_detail/:superId',controllerSupervisor.supervisorDetail)
 //edit and update supervisor details
 router.put('/supervisor_edit/:superId',controllerSupervisor.superEditUpdate)
-//delete supervisoe
+//delete supervisor
 router.delete('/supervisor_delete/:superId',controllerSupervisor.superDelete)
 
 

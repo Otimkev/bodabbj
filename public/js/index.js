@@ -1,6 +1,7 @@
 function validate(){
   let firstname = document.myform.username
   let lastname = document.myform.lastname
+  let current_date = document.myform.currentDate;
   let phone = document.myform.phone
   let nationality = document.myform.nationality
   let dob = document.myform.dob
@@ -11,27 +12,36 @@ function validate(){
   let ref_phone = document.myform.ref_phone
   let ref_occupation = document.myform.ref_occupation
   let ref_dob = document.myform.ref_dob
+  let downpay = document.myform.downpay
   let other_loans = document.myform.other_loans
   let stage_name = document.myform.stage_name
-
+  let generateId = document.myform.id
 
  
   
   if(Firstname(firstname)){
    if(Lastname(lastname)){
-    if(Phone(phone)){
-     if(Nationality(nationality)){
-      if(DateOfBirth(dob)){
-       if(NIN(nin)){
-        if(Vehicle(vehicle)){
-         if(Ref_fname(ref_firstname)){
-          if(Ref_lname(ref_lastname)){
-           if(Ref_phone(ref_phone)){
-            if(Ref_work(ref_occupation)){
-             if(Ref_dob(ref_dob)){
-              if(Other_loans(other_loans)){
-               if(Stage_name(stage_name)){
-                  return true
+     if(CurrentDate(current_date)){
+      if(Phone(phone)){
+        if(Nationality(nationality)){
+         if(DateOfBirth(dob)){
+          if(NIN(nin)){
+           if(Vehicle(vehicle)){
+            if(Ref_fname(ref_firstname)){
+             if(Ref_lname(ref_lastname)){
+              if(Ref_phone(ref_phone)){
+               if(Ref_work(ref_occupation)){
+                if(Ref_dob(ref_dob)){
+                  if(DownPay(downpay)){
+                    if(Other_loans(other_loans)){
+                      if(Stage_name(stage_name)){
+                         if(GenerateId(generateId)){
+                           return true
+                         }
+                      }
+                     }
+                  }
+                }
                }
               }
              }
@@ -41,9 +51,8 @@ function validate(){
          }
         }
        }
-      }
      }
-    }
+
    }
   
   }
@@ -54,13 +63,14 @@ function validate(){
   function Firstname(input,para1){
    var letters = /^[A-Za-z]+$/;
    if(input.value.match(letters)){
+    input.style.border='2px solid green'
     document.getElementById('para1').innerHTML =''
     return true
    }
    else{
-   
-    input.focus()
     document.getElementById('para1').innerHTML = 'First Name must have alphanumeric characters only'
+    input.style.border='2px solid red'
+    input.focus()
     return false
    }
   }
@@ -68,43 +78,68 @@ function validate(){
   function Lastname(input){
    var letters = /^[A-Za-z]+$/;
    if(input.value.match(letters)){
+     input.style.border='2px solid green'
      document.getElementById('para2').innerHTML = ''
     return true
    }
    else{
     document.getElementById('para2').innerHTML = 'Last Name must have alphanumeric characters only'
+    input.style.border='2px solid red'
     input.focus()
     return false
    }
   }
   
-  function Phone(uadd)
-  { 
-  var letters = /^[0-9a-zA-Z]+$/;
-  if(uadd.value.match(letters))
+  function CurrentDate(input)
   {
+  if(input.value == "")
+  {
+  document.getElementById('para3').innerHTML = 'Select Current Date from the list'
+  input.style.border='2px solid red'
+  input.focus();
+  return false;
+  }
+  else
+  {
+    document.getElementById('para3').innerHTML = ''
+    input.style.border='2px solid green'
+  return true;
+  }
+  }
+
+
+  
+  function Phone(input)
+  { 
+  var letters = /^[0-9]+$/;
+  if(input.value.match(letters))
+  { 
+    input.style.border='2px solid green'
     document.getElementById('para4').innerHTML = ''
   return true;
   }
   else
   {
-    document.getElementById('para4').innerHTML = 'Phone No must be numeric characters only'
-  uadd.focus();
+    document.getElementById('para4').innerHTML = 'Phone No must be numeric characters only and must be 10 digits'
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }}
   
   
-  function Nationality(ucountry)
+  function Nationality(input)
   {
-  if(ucountry.value == "Default")
+  if(input.value == "Default")
   {
   document.getElementById('para5').innerHTML = 'Select your country from the list'
-  ucountry.focus();
+  input.style.border='2px solid red'
+  input.focus();
   return false;
   }
   else
   {
     document.getElementById('para5').innerHTML = ''
+    input.style.border='2px solid green'
   return true;
   }
   }
@@ -114,13 +149,15 @@ function validate(){
   {
   if(input.value == "")
   {
-    document.getElementById('para6').innerHTML = 'Input your Date of birth from the list'
-  input.focus();
+    document.getElementById('para6').innerHTML = 'Input Date of birth from the list'
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }
   else
   {
     document.getElementById('para6').innerHTML = ''
+    input.style.border='2px solid green'
   return true;
   }
   }
@@ -131,12 +168,14 @@ function validate(){
   if(input.value == "")
   {
     document.getElementById('para7').innerHTML = 'Input NIN number'
+    input.style.border='2px solid red'
   input.focus();
   return false;
   }
   else
   {
     document.getElementById('para7').innerHTML = ''
+    input.style.border='2px solid green'
   return true;
   }
   }
@@ -147,124 +186,186 @@ function validate(){
   if(input.value == "Default")
   {
     document.getElementById('para8').innerHTML = 'Select vehicle from the list'
-  input.focus();
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }
   else
   {
     document.getElementById('para8').innerHTML = ''
+    input.style.border='2px solid green'
   return true;
   }
   }
   
   
-  function Ref_fname(uadd)
+  function Ref_fname(input)
   { 
    var letters = /^[A-Za-z]+$/;
-  if(uadd.value.match(letters))
+  if(input.value.match(letters))
   {
     document.getElementById('para9').innerHTML = ''
+    input.style.border='2px solid green'
   return true;
   }
   else
   {
     document.getElementById('para9').innerHTML = 'First Name must have alphanumeric characters only'
-  uadd.focus();
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }}
   
   
-  function Ref_lname(uadd)
+  function Ref_lname(input)
   { 
    var letters = /^[A-Za-z]+$/;
-  if(uadd.value.match(letters))
+  if(input.value.match(letters))
   {
     document.getElementById('para10').innerHTML = ''
+    input.style.border='2px solid green'
   return true;
   }
   else
   {
     document.getElementById('para10').innerHTML = 'Last Name must have alphanumeric characters only'
-  uadd.focus();
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }}
   
   
-  function Ref_phone(uadd)
+  function Ref_phone(input)
   { 
-  var letters = /^[0-9a-zA-Z]+$/;
-  if(uadd.value.match(letters))
+  var letters =  /^[0-9]+$/;
+  if(input.value.match(letters))
   {
     document.getElementById('para11').innerHTML =''
+    input.style.border='2px solid green'
   return true;
   }
   else
   {
     document.getElementById('para11').innerHTML = 'Referee Phone No. must have alphanumeric characters only'
-  uadd.focus();
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }}
   
   
-  function Ref_work(uadd)
+  function Ref_work(input)
   { 
 
-  if(uadd.value == '')
+  if(input.value == '')
   {
     document.getElementById('para12').innerHTML = 'Fill in occupation'
-  uadd.focus();
+    input.style.border='2px solid red'
+  input.focus();
   return false;
   }
   else
   {
   document.getElementById('para12').innerHTML = ''
+  input.style.border='2px solid green'
   return true
   }}
   
 
-  function Ref_dob(uadd)
+  function Ref_dob(input)
   { 
-    if(uadd.value == '')
+    if(input.value == '')
   {
-    document.getElementById('para13').innerHTML = 'Select date of birth'
-  uadd.focus();
+    document.getElementById('para13').innerHTML = 'Select date of birth from the list'
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }
   else
   {
     document.getElementById('para13').innerHTML = ''
+    input.style.border='2px solid green'
   return true
   }}
   
+  function DownPay(input)
+  { 
+    if(input.value == 850000 || input.value == 950000)
+  {
+    document.getElementById('para14').innerHTML = ''
+    input.style.border='2px solid green'
+  return true
+  }
+  else
+  {
+    document.getElementById('para14').innerHTML = '850,000 for bodaboda and 950,000 for tukutuku'
+    input.style.border='2px solid red'
+    input.focus();
+  return false;
+
+  }}
+
   
-  function Other_loans(uadd)
+  function Other_loans(input)
   { 
   
-  if(uadd.value == '')
+  if(input.value == '')
   {
     document.getElementById('para16').innerHTML = 'Fill in Other loans details'
-  uadd.focus();
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }
   else
   {
     document.getElementById('para16').innerHTML = ''
+    input.style.border='2p solid green'
+
   return true
   }}
   
   
-  function Stage_name(uadd)
+  function Stage_name(input)
   { 
   
-  if(uadd.value == 'Default')
+  if(input.value == 'Default')
   {
     document.getElementById('para17').innerHTML = 'Select Stage Name from the list'
-  uadd.focus();
+    input.style.border='2px solid red'
+    input.focus();
   return false;
   }
   else
   {
     document.getElementById('para17').innerHTML = ''
+    input.style.border='2px solid green'
   return true
   }}
 
+
+let button = document.getElementById('generate')
+let input = document.getElementById('generateId')
+let stageName = document.myform.stage_name;
+let fname = document.getElementById('fname')
+let lname = document.getElementById('lname')
+ button.addEventListener('click',()=>{
+
+input.value = fname.value + lname.value + new Date().getFullYear().toString() + new Date().getMonth().toString() + stageName.value
+ })
+
+
+  function GenerateId(input)
+  { 
+  
+  if(input.value == '')
+  {
+    document.getElementById('para18').innerHTML = 'Click on generate button to generate customer id'
+    input.style.border='2px solid red'
+  input.focus();
+  return false;
+  }
+  else
+  {
+    document.getElementById('para18').innerHTML = ''
+    input.style.border='2px solid green'
+  return true
+  }}
