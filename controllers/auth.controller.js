@@ -20,8 +20,10 @@ console.log(error)
 }
 
 exports.get_signin = async(req,res)=>{
-  try{
- res.status(200).render('signin')
+  try{await User.find((err,user)=>{
+    if(err) return res.status(500).send({message:'server error'})
+     if(user) return res.status(200).render('signin')
+  })
   }catch(error){
     console.log(error)
   }

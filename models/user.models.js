@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
+
 const AdminSchema = new mongoose.Schema({
  username:String,
 //  firstname:String,
 lastname:String,
  currentDate:{
-  type:Date,
-  default:Date.now()
+  type:String,
  },
  password:String,
  id:String,
@@ -16,7 +16,7 @@ lastname:String,
  supervisor:String,
  workingdays:Number,
  dob:{
-   type:Date,
+   type:String,
  },
  role:{
    type:String,
@@ -46,6 +46,7 @@ lastname:String,
  next_pay:Date,
  customer_id:String,
  projection:String,
+ salesname:String,
 })
  AdminSchema.virtual('fullname').get(function(){
    return this.username+this.lastname
@@ -57,6 +58,30 @@ lastname:String,
   });
   };
  
+AdminSchema.virtual('remainingBal').get(function(){
+  let customer = this;
+  if(customer.vehicle == 'bodaboda'){
+    return customer.balance = 6000160-customer.downpay
+  }else{
+    return customer.balance = 7070160-customer.downpay
+  }
+})
+
+
+
+AdminSchema.virtual('next').get(function(){
+  let customer = this
+  let date = new Date(customer.currentDate)
+    var d = date.getDate();
+    date.setMonth(date.getMonth() + +1);
+     if (date.getDate() != d) {
+      date.setDate(0);
+     }
+    return date;
+
+})
+ 
+
 
 
 const Admin = mongoose.model('Admin',AdminSchema);

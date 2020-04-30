@@ -1,21 +1,57 @@
 extends main
 
-block content
- table.table.table-striped
-  thead
-    tr
-      th(scope='col') First Name
-      th(scope='col') Last name
-  tbody
-  //-  each user in users
-  //-   tr
-  //-     td #{user.username}
-  //-     td= user.email
-  //-     //- td= boda.age
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/admin_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href=`/api/user/admin_reg`) Profile
+              a.dropdown-item(href='/api/auth/logout') Logout
 
- div
-  a(href='/sales/register')
-   button(class="btn btn-primary") Add Sales
- div
-  a(href='/logout')
-   button(class="btn btn-success mt-4") Logout
+block content
+ .row(style='margin-top:5%')
+  .col-sm-6.col-md-3(style='background-color:')
+   .card(style='width: 12rem;')
+    img.card-img-top.mx-auto(src='/static/img/account1.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{num}
+     p.card-text.text-center
+      | Supervisors
+     a.btn.btn-primary(href='/api/user/supervisor_list' style='width:100%') view all
+
+
+
+  .col-sm-6.col-md-3(style='background-color:')
+   .card(style='width: 12rem;')
+    img.card-img-top.mx-auto(src='/static/img/account.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{num1}
+     p.card-text.text-center
+      | Sales executives
+     a.btn.btn-primary(href='/api/user/sales_list' style='width:100%') view all
+
+
+  .col-sm-6.col-md-3(style='background-color:')
+   .card(style='width: 12rem;')
+    img.card-img-top.mx-auto(src='/static/img/scooter4.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{boda}
+     p.card-text.text-center
+      | Bodabodas
+     a.btn.btn-primary(href='/api/user/boda_list' style='width:100%') view all
+
+
+  .col-sm-6.col-md-3(style='background-color:')
+   .card(style='width: 12rem;')
+    img.card-img-top.mx-auto(src='/static/img/scooter1.png', alt='...',style='width:8rem;height:8rem')
+    .card-body
+     h5.card-title.text-center #{tuku}
+     p.card-text.text-center
+      | Tukutukus
+     a.btn.btn-primary(href='/api/user/tuku_list' style='width:100%') view all
+   

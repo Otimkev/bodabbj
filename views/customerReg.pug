@@ -1,15 +1,25 @@
-extend layout
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/customer_reg') Add customer
+              .dropdown-divider
+              a.dropdown-item(href='/api/auth/logout') Logout
 
 block content
- form(method="POST",action="/boda/add",autocomplete='off',name='myform',onsubmit='return validate()')
+ form(method="POST",action="/api/user/customer_reg",autocomplete='off',name='myform',onsubmit='return validate()')
    .form-row
     .form-group.col-md-4
       label(for='firstname') First Name
-      input.form-control(name='username', type='text')
+      input.form-control#fname(name='username', type='text')
       p.text-danger#para1.small
     .form-group.col-md-4
       label(for='lastname') Last Name
-      input.form-control(name='lastname',type='text')
+      input.form-control#lname(name='lastname',type='text')
       p.text-danger#para2.small
     .form-group.col-md-4
       label(for='currentDate') Current Date
@@ -34,11 +44,11 @@ block content
       input.form-control(name='dob', type='date')
       p.text-danger#para6.small
    .form-row
-    .form-group.col.md-6
+    .form-group.col-md-4
      label(for="nin") NIN
      input.form-control(name="nin", type='text')
      p.text-danger#para7.small
-    .form-group.col-md-6
+    .form-group.col-md-4
      label(for='vehicle') Vehicle type
      select(name="vehicle").form-control
       option(selected='' value="Default") Choose...
@@ -74,7 +84,7 @@ block content
        input.form-control(name='downpay', type='text')
        p.text-danger#para14.small
     .form-row
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='marital_status') Marital Status
        select(name='marital_status').form-control
         option(selected='' value="Default") Choose...
@@ -82,19 +92,32 @@ block content
         option(value="divoiced") divorced
         option(value="married") married
        p.text-danger#para15.small
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='other_loans') Other Loans
        input.form-control(name='other_loans', type='text')
        p.text-danger#para16.small
-    .form-row
-     .form-group.col-md-6
+     .form-group.col-md-4
        label(for='stage_name') Stage Name
        select(name='stage_name').form-control
-        option(selected='' value="Default") Choose...
+        option(selected='' value="") Choose...
         option(value="lc1") lc1
         option(value="lc3") lc3
        p.text-danger#para17.small
-    button.btn.btn-dark(type='submit') Regiser
- a(href='/sales/panel')
-  button(class="btn btn-info mt-4 ml-4") back
-    
+    .form-row
+     .form-group.col-md-4
+      input#generateId.form-control(type='text', placeholder='Customer ID', readonly, name='id')
+      p.text-danger#para18.small
+     .form-group.col-md-4
+      input(type="text",name='salesname', hidden,value=`${snn.username}`,placeholder=`${snn.username}`)
+    .form-row()
+     .form-group()
+       button.btn.btn-dark(type='submit' style='width:100px;text-align:center') Register
+ .form-row
+     .form-group
+      form(method='get' action='/api/user/salespanel').mb-4
+       button.btn.btn-dark(style='width:100px') Back
+     .form-group.ml-2
+      button.btn.btn-primary(type='' id='generate') Generate Id
+         
+block scripts
+    script(src='/static/js/index.js')

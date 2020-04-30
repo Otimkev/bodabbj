@@ -6,16 +6,20 @@ block navigation
           a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
            img(src="/static/img/more.png" alt='...',style='background-color:white')
            .dropdown-menu(aria-labelledby='navbarDropdown')
-              a.dropdown-item(href='/api/user/customer_reg') Add customer
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/admin_reg') Add admin
               .dropdown-divider
+              a.dropdown-item(href=`/api/user/admin_reg`) Profile
               a.dropdown-item(href='/api/auth/logout') Logout
+
 
 block content
  table.table.table(style='text-align:center')
   thead
     tr
-      th(scope='col') Full Name
-      th(scope='col') Balance
+      th(scope='col') Fist Name
+      th(scope='col') Last Name
       th(scope='col') Vehicle type
       th(scope='col') Next payment
       th(scope='col') Status
@@ -24,14 +28,13 @@ block content
     each users in user
      tr
      td= users.username
-     td= users.remainingBal
+     td= users.lastname
      td= users.vehicle
      td= users.next
      td
       h6(style='color:green') ok
      td
-       a(href=`/api/user/customer/${users._id}`)
+       a(href=`/api/user/tuku_detail/${users._id}`)
         img(src="/static/img/eye.png", alt="", srcset="")
- 
-//-  a(href='/api/user/adminpanel')
-//-   button(class="btn btn-dark mt-2") back
+ a(href='/api/user/adminpanel')
+  button(class="btn btn-dark",style='width:100px').mb-2 back

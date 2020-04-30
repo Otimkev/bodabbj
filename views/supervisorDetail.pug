@@ -1,0 +1,60 @@
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/supervisor_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href='/api/auth/logout') Logout
+block content
+  form(method="POST",action=`/api/user/supervisor_edit/${user._id}?_method=put`,autocomplete='off')
+   .form-row
+    .form-group.col-md-4
+      label(for='username') First Name
+      input.form-control(name='username', type='text',placeholder=`${user.username}`,value=`${user.username}`)
+    .form-group.col-md-4
+      label(for='lastname') Last Name
+      input.form-control(name='lastname',type='text',placeholder=`${user.lastname}`,value=`${user.lastname}`)
+    .form-group.col-md-4
+      label(for='currentDate') Current Date
+      input.form-control(name='currentDate',type='date',placeholder=`${user.currentDate}`,value=`${user.currentDate}`)
+   .form-row 
+    .form-group.col-md-4
+      label(for='password') Password
+      input.form-control(name='password', type='password',placeholder=`${user.password}`,value=`${user.password}`)
+    .form-group.col-md-4
+      label(for='id') ID
+      input.form-control(name='id', type='text',placeholder=`${user.id}`,value=`${user.id}`) 
+   .form-row 
+    .form-group.col-md-4
+      label(for='email') email
+      input.form-control(name='email', type='text',placeholder=`${user.email}`,value=`${user.email}`)
+    .form-group.col-md-4
+      label(for='phone') Phone/s contact
+      input.form-control(name='phone', type='text',placeholder=`${user.phone}`,value=`${user.phone}`)
+    .form-group.col-md-4
+      label(for='workingdays') Number of working days
+      input.form-control(name='workingdays', type='text',placeholder=`${user.workingdays}`,value=`${user.workingdays}`)
+   .form-row 
+    .form-group.col-md-4
+      label(for='dob') Date Of Birth
+      input.form-control(name='dob', type='date',placeholder=`${user.dob}`,value=`${user.dob}`)
+    .form-group.col-md-4
+      label(for='role') Role
+      select(name="role" type='text').form-control
+       option(value="Default") #{user.role}
+       option(value="supervisor" selected) supervisor
+   .form-row.mt-3
+    .form-group.col-md.text-center
+     button.btn.btn-success(type='submit' style='width:100px') Submit
+  .col-md.text-center
+     a(href='/api/user/adminpanel')
+      button(class="btn btn-dark",style='width:100px').mb-2 back
+  .col-md.text-center
+     a(href=`/api/user/supervisor_delete/${user._id}?_method=delete`)
+      button.btn.btn-danger(style='width:100px') Delete

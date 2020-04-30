@@ -10,10 +10,11 @@ const pug = require('pug')
 const app = express();
 const path = require('path')
 const methodOveride = require('method-override')
-const bcrypt = require('bcryptjs')
+const cookie = require('cookie-session')
+
 
 //public files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static',express.static(path.join(__dirname, 'public')));
 //setting up rendering engine
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug')
@@ -25,8 +26,8 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(methodOveride('_method',{methods:['POST','GET']}))
 
 //connnecting to mongodb
-mongoose.set('useNewUrlParser','true');
-mongoose.set('useUnifiedTopology','ture')
+mongoose.set('useNewUrlParser',true);
+mongoose.set('useUnifiedTopology',true)
 mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DB_STRING);
 
@@ -49,8 +50,8 @@ app.use(session({
  resave:true,
  saveUninitialized:true,
  cookie: {
-  maxAge: 1000 * 30
-}
+  maxAge: 1000 * 60 * 60 * 24 * 7
+},store:sessionStore
 }));
 app.use(passport.initialize())
 app.use(passport.session())
@@ -86,7 +87,12 @@ passport.serializeUser(function(user, done) {
     });
     });
     }))
-
+    // app.set('trust proxy', 1) // trust first proxy
+ 
+    // app.use(cookie({
+    
+    //   keys: ['key1', 'key2']
+    // }))
 
 //import routes
 const authRoute = require('./routes/auth.routes')
@@ -100,16 +106,7 @@ app.use('/api/user/',userRoute)
 
 
 // Logout form
-app.get('/logout', (req, res) => {
-  if (req.session) {
-      req.session.destroy(function (err) {
-          if (err) {
-          } else {
-             return res.redirect('/login');
-          }
-      })
-  }  
-})
+
 
 
 

@@ -1,0 +1,75 @@
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/sales_reg') Add sales executive
+              a.dropdown-item(href='/api/user/supervisor_reg') Add supervisor
+              a.dropdown-item(href='/api/user/supervisor_reg') Add admin
+              .dropdown-divider
+              a.dropdown-item(href='/api/auth/logout') Logout
+
+block content
+  form(method="POST",action="/api/user/supervisor_reg",autocomplete='off',onsubmit='return supervisorValidation()',name='myform1')
+   .form-row
+    .form-group.col-md-4
+      label(for='username') First Name
+      input.form-control(name='username', type='text')
+      p.text-danger#parasp1.small
+    .form-group.col-md-4
+      label(for='lastname') Last Name
+      input.form-control(name='lastname',type='text')
+      p.text-danger#parasp2.small
+    .form-group.col-md-4
+      label(for='currentDate') Current Date
+      input.form-control(name='currentDate',type='date')
+      p.text-danger#parasp3.small
+   .form-row 
+    .form-group.col-md-4
+      label(for='password') Password
+      input.form-control(name='password', type='password')
+      p.text-danger#parasp4.small
+    .form-group.col-md-4
+      label(for='password2') Password2
+      input.form-control(name='password2', type='password')
+      p.text-danger#parasp5.small
+    .form-group.col-md-4
+      label(for='id') ID
+      input.form-control(name='id', type='text')
+      p.text-danger#parasp6.small 
+   .form-row 
+    .form-group.col-md-4
+      label(for='email') email
+      input.form-control(name='email', type='text')
+    .form-group.col-md-4
+      label(for='phone') Phone/s contact
+      input.form-control(name='phone', type='text')
+      p.text-danger#parasp7.small
+    .form-group.col-md-4
+      label(for='workingdays') Number of working days
+      input.form-control(name='workingdays', type='text')
+      p.text-danger#parasp8.small
+   .form-row 
+    .form-group.col-md-4
+      label(for='dob') Date Of Birth
+      input.form-control(name='dob', type='date')
+      p.text-danger#parasp9.small
+    .form-group.col-md-4
+      label(for='role') Role
+      select(name="role" type='text').form-control
+       option(value="Default") Choose...
+       option(value="supervisor" selected) supervisor
+   .form-row.mt-3
+    .form-group.col-md.text-center
+     button.btn.btn-success(type='submit' style='width:100px') Regiser
+  .col-md.text-center.mb-2
+     button.btn.btn-info(type='reset',style='width:100px') Reset
+  .col-md.text-center.mb-3
+     a(href='/api/user/adminpanel')
+      button(class="btn btn-dark",style='width:100px').mb-2 back
+block scripts
+
+ script(src='/static/js/supervisor.js')

@@ -1,0 +1,95 @@
+extends main
+
+block navigation
+      ul.nav.navbar-nav.navbar-left(style='margin-left:85%')
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           img(src="/static/img/more.png" alt='...',style='background-color:white')
+           .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/api/user/customer_reg') Add customer
+              .dropdown-divider
+              a.dropdown-item(href='/api/auth/logout') Logout
+
+block content
+ form(method="POST",action=`/api/user/customer_update/${user._id}?_method=put`,autocomplete='off')
+   .form-row
+    .form-group.col-md-4
+      label(for='firstname') First Name
+      input.form-control(name='username', type='text',placeholder=`${user.username}` value=`${user.username}`)
+    .form-group.col-md-4
+      label(for='lastname') Last Name
+      input.form-control(name='lastname',type='text',value=`${user.lastname}`,placeholder=`${user.lastname}`)
+    .form-group.col-md-4
+      label(for='currentDate') Current Date
+      input.form-control(name='currentDate',type='date',value=`${user.currentDate}`,placeholder=`${user.currentDate}`)
+   .form-row
+    .form-group.col-md-4
+     label(for='phone') Phone No.
+     input.form-control(name='phone', type='text',value=`${user.phone}`,placeholder=`${user.phone}`)
+    .form-group.col-md-4
+     label(for='nationality') nationality
+     select(name='nationality', type='text',value=`${user.nationality}`,placeholder=`${user.nationality}`).form-control
+      option( selected='') choose..
+      option(value='Ugandan') Ugandan
+      option(value='Kenyan') Kenyan
+      option(value='Tanzanian') Tanzanian
+      option(value='Rwandan') Rwandan
+      label(for='nationality') Nationality
+    .form-group.col-md-4
+      label(for='dob') Date of Birth
+      input.form-control(name='dob', type='date',value=`${user.bod}`,placeholder=`${user.dob}`)
+   .form-row
+    .form-group.col-md-4
+     label(for="nin") NIN
+     input.form-control(name="nin", type='text',value=`${user.nin}`,placeholder=`${user.nin}`)
+    .form-group.col-md-4
+     label(for='vehicle') Vehicle type
+     select(name="vehicle").form-control
+      option(selected=``) #{user.vehicle}
+      option(value="user") user
+      option(value="tukutuku") tukutuku
+   fieldset
+    legend Referee
+    .form-row
+     .form-group.col-md-4
+       label(for='ref_firstname') Referee First Name
+       input.form-control(name='ref_firstname', type='text',value=`${user.ref_firstname}`,placeholder=`${user.ref_firstname}`)
+     .form-group.col-md-4
+      label(for='ref_lastname') Referee Last Name
+      input.form-control(name='ref_lastname', type='text',value=`${user.ref_lastname}`,placeholder=`${user.ref_lastname}`)
+     .form-group.col-md-4
+       label(for='ref_ref_phone') Ref Phone
+       input.form-control(name='ref_phone', type='text',value=`${user.ref_phone}`,placeholder=`${user.ref_phone}`)
+    .form-row
+     .form-group.col-md-4
+      label(for='ref_occupation') Referee occupation
+      input.form-control(name='ref_occupation', type='text',value=`${user.ref_occupation}`,placeholder=`${user.ref_occupation}`)
+     .form-group.col-md-4
+       label(for='ref_dob') Referee Date Of Birth
+       input.form-control(name='ref_dob', type='date',value=`${user.ref_dob}`,placeholder=`${user.ref_dob}`)
+     .form-group.col-md-4
+       label(for='downpay') Down Payment
+       input.form-control(name='downpay', type='text',value=`${user.downpay}`,placeholder=`${user.downpay}`)
+    .form-row
+     .form-group.col-md-4
+       label(for='marital_status') Marital Status
+       select(name='marital_status').form-control
+        option(selected='',) #{user.marital_status}
+        option(value="single") single
+        option(value="divorced") divorced
+        option(value="married") married
+     .form-group.col-md-4
+       label(for='other_loans') Other Loans
+       input.form-control(name='other_loans', type='text',value=`${user.other_loans}`,placeholder=`${user.other_loans}`)
+     .form-group.col-md-4
+       label(for='stage_name') Stage Name
+       select(name='stage_name',value=`${user.stage_name}`,placeholder=`${user.stage_name}`).form-control
+        option(selected='',)  #{user.stage_name}
+        option(value="lc1") lc1
+        option(value="lc3") lc3
+    .form-row(style='text-align:center')
+     .form-group.col-md
+      button.btn.btn-success(type='submit',style='width:100px') submit
+ .col-md.text-center
+  a(href=`/api/user/customer/${user._id}`)
+   button(class="btn btn-dark",style='width:100px').mb-3 back
